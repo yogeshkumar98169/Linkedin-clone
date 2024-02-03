@@ -11,6 +11,7 @@ export default function RegisterComponent() {
       let res = await RegisterAPI(credentials.email, credentials.password);
       console.log(res);
       toast.success("Account Created ");
+      navigate("/home");
     } catch (error) {
       toast.info("You are already a Linkedin member");
     }
@@ -19,6 +20,7 @@ export default function RegisterComponent() {
     let res = await GoogleSignInAPI();
     console.log(res);
     toast.success("Login Successfully");
+    navigate("/home");
   };
   const [credentials, setCredentials] = useState({});
   return (
