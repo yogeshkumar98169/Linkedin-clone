@@ -77,7 +77,7 @@ export default function LoginComponent() {
             <p>
               New to Linkedin?{" "}
               <span
-                className="text-sky-600 font-semibold px-2"
+                className="text-sky-600 font-semibold px-2 cursor-pointer hover:underline"
                 onClick={() => {
                   navigate("/register");
                 }}
