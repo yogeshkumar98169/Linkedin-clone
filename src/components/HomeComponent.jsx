@@ -1,4 +1,4 @@
 import React from "react";
 export default function HomeComponent() {
-  return <div>HomeComponent</div>;
+  return <div className="h-screen">HomeComponent</div>;
 }
