@@ -31,7 +31,7 @@ export default function RegisterComponent() {
       </div>
       <div className="flex flex-col place-content-center place-items-center mt-14">
         <div>
-          <p className="text-2xl font-bold">
+          <p className="text-2xl font-bold max-w-72">
             Make the most of your Professional Life
           </p>
           <p className="opacity-50"></p>

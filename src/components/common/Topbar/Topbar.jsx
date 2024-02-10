@@ -9,8 +9,12 @@ import {
 } from "react-icons/ai";
 import { BsBriefcase } from "react-icons/bs";
 import User from "../../../assets/user.png";
-
+import { useNavigate } from "react-router-dom";
 export default function Toobar() {
+  let navigate = useNavigate();
+  const goToRoute = (route) => {
+    navigate(route);
+  };
   return (
     <>
       <div className="w-full h-16 bg-white flex justify-between items-center p-6">
@@ -19,10 +23,12 @@ export default function Toobar() {
           <AiOutlineSearch
             size={25}
             className="cursor-pointer text-[#6f6e6e] hover:text-black"
+            onClick={() => goToRoute("/search")}
           />
           <AiOutlineHome
             size={25}
             className="cursor-pointer text-[#6f6e6e] hover:text-black"
+            onClick={() => goToRoute("/home")}
           />
           <AiOutlineUser
             size={25}

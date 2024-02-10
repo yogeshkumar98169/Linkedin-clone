@@ -1,4 +1,9 @@
 import React from "react";
+import PostUpdate from "./common/PostUpdate/PostUpdate";
 export default function HomeComponent() {
-  return <div className="h-screen">HomeComponent</div>;
+  return (
+    <div>
+      <PostUpdate />
+    </div>
+  );
 }
