@@ -2,16 +2,23 @@ import React, { useState, useMemo } from "react";
 import ModalComponent from "../Modal/ModalComponent";
 import { postStatus, getStatus } from "../../../Api/FirestoreAPI"; //import to send data to firestore
 import PostCard from "../PostCard/PostCard";
+import { getCurrentTimeStamp } from "../../../Helper/Moment";
 export default function PostUpdate() {
+  let userEmail = localStorage.getItem("userEmail"); //now we import to send it to Firestore
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [allStatus, setAllStatus] = useState([]); //we can use an array becuase data may be much like comments etc.
   const sendStatus = () => {
-    postStatus(status); //the status and the data is transfered to postStatus function
+    let obj = {
+      //SEnding data to firestore
+      status: status,
+      timeStamp: getCurrentTimeStamp("LLL"),
+      userEmail: userEmail,
+    };
+    postStatus(obj); //the status and the data is transfered to postStatus function
     setModalOpen(false);
     setStatus("");
   };
-
   useMemo(() => {
     getStatus(setAllStatus);
   }, []);

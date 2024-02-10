@@ -8,11 +8,8 @@ import { toast } from "react-toastify";
 
 const dbRef = collection(fireStore, "posts");
 
-export const postStatus = (status) => {
-  let data = {
-    status: status,
-  };
-  addDoc(dbRef, data)
+export const postStatus = (object) => {
+  addDoc(dbRef, object)
     .then((response) => {
       toast.success("Document has been added successfully");
     })

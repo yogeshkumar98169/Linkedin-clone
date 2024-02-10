@@ -9,7 +9,7 @@ export default function RegisterComponent() {
   const logIn = async () => {
     try {
       let res = await RegisterAPI(credentials.email, credentials.password);
-      console.log(res);
+      localStorage.setItem("userEmail", res.user.email);
       toast.success("Account Created ");
       navigate("/home");
     } catch (error) {
@@ -18,7 +18,7 @@ export default function RegisterComponent() {
   };
   const googleSignIn = async () => {
     let res = await GoogleSignInAPI();
-    console.log(res);
+    localStorage.setItem("userEmail", res.user.email);
     toast.success("Login Successfully");
     navigate("/home");
   };

@@ -10,7 +10,7 @@ export default function LoginComponent() {
   const logIn = async () => {
     try {
       let res = await LoginAPI(credentials.email, credentials.password);
-      console.log(res);
+      localStorage.setItem("userEmail", res.user.email);
       toast.success("Sigin In Successfully");
       navigate("/home");
     } catch (error) {
@@ -19,7 +19,7 @@ export default function LoginComponent() {
   };
   const googleSignIn = async () => {
     let res = await GoogleSignInAPI();
-    console.log(res);
+    localStorage.setItem("userEmail", res.user.email);
     toast.success("Login Successfully");
     navigate("/home");
   };
