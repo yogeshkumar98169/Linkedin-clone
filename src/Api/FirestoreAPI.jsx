@@ -1,5 +1,11 @@
 import { fireStore } from "../firebaseConfig";
-import { addDoc, collection, onSnapshot } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 import { toast } from "react-toastify";
 /*
 !addDoc means add Document
@@ -11,7 +17,7 @@ let userRef = collection(fireStore, "users");
 export const postStatus = (object) => {
   addDoc(postRef, object)
     .then((response) => {
-      toast.success("Document has been added successfully");
+      toast.success("post has been added");
     })
     .catch((error) => {
       toast.error(error);
@@ -49,4 +55,15 @@ export const getCurrentUser = (setCurrentUser) => {
         })[0] //to acces the first element in array
     );
   });
+};
+
+export const editProfile = (userID, payload) => {
+  let userToEdit = doc(userRef, userID);
+  updateDoc(userToEdit, payload)
+    .then((response) => {
+      toast.success("Profile has been Updated Successfully");
+    })
+    .catch((error) => {
+      toast.error(error);
+    });
 };
