@@ -28,7 +28,7 @@ export default function PostUpdate({ currentUser }) {
   }, []);
   return (
     <div className="flex justify-center items-center mt-10 flex-col">
-      <div className="w-[510px] h-28 bg-[#f5f5f5] border-[1px] border-solid border-[#b7b7b7] rounded-lg flex justify-center items-center">
+      <div className="w-full max-w-[510px] h-28 bg-[#f5f5f5] border-[1px] border-solid border-[#b7b7b7] rounded-lg flex justify-center items-center">
         <button
           className="bg-white hover:bg-[#dcdbdb] w-4/5 h-10 text-left rounded-3xl px-4 text-black  border-[1px] border-solid border-[#b7b7b7] cursor-pointer"
           onClick={() => setModalOpen(true)}
@@ -43,7 +43,7 @@ export default function PostUpdate({ currentUser }) {
           sendStatus={sendStatus}
         />
       </div>
-      <div>
+      <div className="w-full max-w-[510px] h-28 ">
         {allStatus.map((posts) => {
           return (
             <div key={posts.id}>
