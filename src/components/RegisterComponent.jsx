@@ -4,12 +4,14 @@ import LinkedinLogo from "../assets/linkedinLogo.png";
 import GoogleButton from "react-google-button";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { postUserData } from "../Api/FirestoreAPI";
 export default function RegisterComponent() {
   let navigate = useNavigate();
-  const logIn = async () => {
+  const register = async () => {
     try {
       let res = await RegisterAPI(credentials.email, credentials.password);
       localStorage.setItem("userEmail", res.user.email);
+      postUserData({ name: credentials.name, email: credentials.email });
       toast.success("Account Created ");
       navigate("/home");
     } catch (error) {
@@ -39,6 +41,14 @@ export default function RegisterComponent() {
         <div className="flex flex-col mt-8 gap-5 w-72">
           <input
             className="p-2 rounded bg-white border-2 border-solid border-black hover:border-2 focus:border-none focus:border--0"
+            type="text"
+            placeholder="Your name"
+            onChange={(event) => {
+              setCredentials({ ...credentials, name: event.target.value });
+            }}
+          />
+          <input
+            className="p-2 rounded bg-white border-2 border-solid border-black hover:border-2 focus:border-none focus:border--0"
             type="email"
             placeholder="Email or Phone Number"
             onChange={(event) => {
@@ -57,7 +67,7 @@ export default function RegisterComponent() {
         <div className="flex-flex-col mt-2 gap-5 w-72">
           <button
             className="bg-sky-600 text-white p-2 w-72 mt-6 rounded-3xl"
-            onClick={logIn}
+            onClick={register}
           >
             Agree & Join
           </button>

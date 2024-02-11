@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import LinkedinLogo from "../../../assets/linkedinLogo.png";
 import {
   AiOutlineHome,
@@ -10,10 +10,15 @@ import {
 import { BsBriefcase } from "react-icons/bs";
 import User from "../../../assets/user.png";
 import { useNavigate } from "react-router-dom";
+import ProfilePopup from "../ProfilePopup/ProfilePopup";
 export default function Toobar() {
+  const [showPopup, setShowPopup] = useState(false);
   let navigate = useNavigate();
   const goToRoute = (route) => {
     navigate(route);
+  };
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
   };
   return (
     <>
@@ -47,7 +52,13 @@ export default function Toobar() {
             className="cursor-pointer text-[#6f6e6e] hover:text-black"
           />
         </div>
-        <img src={User} alt="User image" className="w-8" />
+        <img
+          src={User}
+          alt="User image"
+          className="w-8"
+          onClick={togglePopup}
+        />
+        {showPopup && <ProfilePopup onClose={togglePopup} />}
       </div>
     </>
   );

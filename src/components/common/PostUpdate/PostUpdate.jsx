@@ -3,7 +3,9 @@ import ModalComponent from "../Modal/ModalComponent";
 import { postStatus, getStatus } from "../../../Api/FirestoreAPI"; //import to send data to firestore
 import PostCard from "../PostCard/PostCard";
 import { getCurrentTimeStamp } from "../../../Helper/Moment";
-export default function PostUpdate() {
+import { getUniqueId } from "../../../Helper/GetUniqueId";
+
+export default function PostUpdate({ currentUser }) {
   let userEmail = localStorage.getItem("userEmail"); //now we import to send it to Firestore
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
@@ -14,6 +16,8 @@ export default function PostUpdate() {
       status: status,
       timeStamp: getCurrentTimeStamp("LLL"),
       userEmail: userEmail,
+      userName: currentUser.name,
+      postID: getUniqueId(),
     };
     postStatus(obj); //the status and the data is transfered to postStatus function
     setModalOpen(false);
@@ -22,7 +26,6 @@ export default function PostUpdate() {
   useMemo(() => {
     getStatus(setAllStatus);
   }, []);
-  console.log(allStatus);
   return (
     <div className="flex justify-center items-center mt-10 flex-col">
       <div className="w-[510px] h-28 bg-[#f5f5f5] border-[1px] border-solid border-[#b7b7b7] rounded-lg flex justify-center items-center">
@@ -43,7 +46,7 @@ export default function PostUpdate() {
       <div>
         {allStatus.map((posts) => {
           return (
-            <div>
+            <div key={posts.id}>
               <PostCard posts={posts}></PostCard>
             </div>
           );

@@ -4,7 +4,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/common/Loader";
-export default function Home() {
+export default function Home({ currentUser }) {
   let navigate = useNavigate();
   const [loading, setLoading] = useState(false); //we import this to see a loader
 
@@ -19,5 +19,9 @@ export default function Home() {
       }
     });
   }, []);
-  return loading ? <HomeComponent /> : <Loader></Loader>; //if loading is true then home component render else loading and then login page
+  return loading ? (
+    <HomeComponent currentUser={currentUser} />
+  ) : (
+    <Loader></Loader>
+  ); //if loading is true then home component render else loading and then login page
 }
