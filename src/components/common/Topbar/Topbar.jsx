@@ -28,7 +28,6 @@ export default function Toobar() {
           <AiOutlineSearch
             size={25}
             className="cursor-pointer text-[#6f6e6e] hover:text-black"
-            onClick={() => goToRoute("/search")}
           />
           <AiOutlineHome
             size={25}
@@ -38,6 +37,7 @@ export default function Toobar() {
           <AiOutlineUser
             size={25}
             className="cursor-pointer text-[#6f6e6e] hover:text-black"
+            onClick={()=>{goToRoute("/profile")}}
           />
           <BsBriefcase
             size={25}
