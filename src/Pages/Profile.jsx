@@ -3,7 +3,7 @@ import ProfileComponent from "../components/ProfileComponent";
 import { onAuthStateChanged } from "firebase/auth"; //used to check whether the user is logged in or log out
 import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
-import Loader from "../components/common/Loader";
+import Loader from "../Helper/Loader";
 
 export default function Profile({ currentUser }) {
   let navigate = useNavigate();
