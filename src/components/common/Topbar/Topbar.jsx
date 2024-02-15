@@ -37,7 +37,6 @@ export default function Toobar() {
           <AiOutlineUser
             size={25}
             className="cursor-pointer text-[#6f6e6e] hover:text-black"
-            onClick={()=>{goToRoute("/profile")}}
           />
           <BsBriefcase
             size={25}
